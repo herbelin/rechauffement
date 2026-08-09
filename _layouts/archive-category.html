@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% include meta.html %}
+    <title>Publications dans la catégorie « {{ page.title }} »</title>
+    {% include mathjax.html %}
+  </head>
+
+  <body>
+    <!-- HEADER -->
+    {% include header.html %}
+
+    <!-- MAIN CONTENT -->
+    <!-- NAVIGATION -->
+
+    <section id="content">
+      <h1>Publications dans la catégorie « {{ page.title }} »</h1>
+
+      {% for post in page.posts %}
+        <li>
+          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          <span>({{ post.date | date: "%b %d, %Y" }})</span>
+        </li>
+      {% endfor %}
+    </section>
+
+    {% include footer.html %}
+  </body>
+</html>

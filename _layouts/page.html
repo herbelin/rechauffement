@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    {% include meta.html %}
+    <title>{{site.name}} | {{page.title}}</title>
+    {% include mathjax.html %}
+  </head>
+
+  <body>
+    <!-- HEADER -->
+    {% include header.html %}
+
+    <!-- MAIN CONTENT -->
+    <!-- NAVIGATION -->
+
+    <section id="content">
+      {{ content }}
+    </section>
+
+    <!-- FOOTER -->
+    {% include footer.html %}
+  </body>
+</html>

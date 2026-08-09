@@ -1,0 +1,22 @@
+---
+title: Catégories
+layout: page
+navigation: categories
+---
+
+<p class="site-links"><a href="/about/">À propos</a></p>
+
+<div class="categories-toc">
+  {% for category in site.categories %}
+    {% assign category_name = category | first %}
+    <h3>{{ category_name | capitalize }}</h3>
+    <ul>
+      {% for post in site.categories[category_name] %}
+        <li>
+          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          <span>({{ post.date | date: "%b %d, %Y" }})</span>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endfor %}
+</div>

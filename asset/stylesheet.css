@@ -1,0 +1,514 @@
+/* ============================================================
+   Mathematics and Computation — stylesheet
+   ============================================================
+
+   Colour palette
+   --accent       #800000  dark red  (links, active nav, draft marker)
+   --nav-bg       #e8cc96  warm amber (footer strip)
+   --border       #d0c6a0  warm tan  (hr, table borders)
+   --muted        #555555  mid-grey  (timestamps, secondary text)
+*/
+
+:root {
+  --accent:      #800000;
+  --nav-bg:      #e8cc96;
+  --border:      #d0c6a0;
+  --muted:       #555555;
+  --content-max: 800px;
+  --content-pad: clamp(1rem, 4vw, 2.5rem);
+}
+
+/* ── Reset ─────────────────────────────────────────────────── */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* ── Base ──────────────────────────────────────────────────── */
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  color: #111;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 18px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Links ─────────────────────────────────────────────────── */
+
+a {
+  color: inherit;
+}
+
+a:hover {
+  color: var(--accent);
+}
+
+a.meta {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a.meta:hover {
+  text-decoration: underline;
+}
+
+/* ── Header ────────────────────────────────────────────────── */
+/*
+   The random-art image is square (2024×2024).  background-size: cover
+   combined with background-position: top center shows the dense
+   patterned top portion as a wide banner.
+*/
+
+header {
+  width: 100%;
+  min-height: clamp(100px, 14vw, 180px);
+  background-color: #e8cc96;
+  background-blend-mode: multiply;
+  background-size: cover;
+  background-position: center 8%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: 2rem;
+}
+
+/* Subtle gradient so text at the bottom stays readable */
+header::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 40%,
+    rgba(255, 248, 220, 0.55) 100%
+  );
+  pointer-events: none;
+}
+
+header h1,
+header h2 {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  padding: 0 var(--content-pad);
+  max-width: calc(var(--content-max) + 2 * var(--content-pad));
+  width: 100%;
+  align-self: center;
+}
+
+header h1 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.8rem, 5vw, 2.6rem);
+  font-weight: bold;
+  color: #111;
+  letter-spacing: -0.01em;
+  text-shadow:
+    0 0 8px rgba(255, 248, 220, 1),
+    0 0 16px rgba(255, 248, 220, 0.9),
+    0 1px 3px rgba(255, 248, 220, 1);
+  line-height: 1.1;
+}
+
+header h2 {
+  font-size: clamp(0.75rem, 1.6vw, 0.95rem);
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #111;
+  margin-top: 0.4rem;
+  text-shadow:
+    0 0 8px rgba(255, 248, 220, 1),
+    0 0 16px rgba(255, 248, 220, 0.9),
+    0 1px 3px rgba(255, 248, 220, 1);
+}
+
+header a {
+  text-decoration: none;
+  color: inherit;
+}
+
+p.archive-all {
+  margin-top: 1.5rem;
+}
+
+p.site-links {
+  text-align: right;
+  margin: 0 0 2rem;
+}
+
+p.pagination-nav {
+  margin-top: 1.5rem;
+}
+
+/* ── Main content ──────────────────────────────────────────── */
+
+#content {
+  max-width: calc(var(--content-max) + 2 * var(--content-pad));
+  margin: 2.5rem auto;
+  padding: 0 var(--content-pad);
+}
+
+section img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ── Typography ────────────────────────────────────────────── */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1.25;
+  color: #111;
+}
+
+h1.post-title {
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  font-weight: bold;
+  margin: 0 0 0.5rem;
+}
+
+h1 { font-size: 1.9rem; margin: 0 0 0.6rem; }
+h2 { font-size: 1.5rem; margin: 1.8rem 0 0.5rem; }
+h3 { font-size: 1.25rem; margin: 1.5rem 0 0.4rem; }
+h4 { font-size: 1.1rem; margin: 1.2rem 0 0.3rem; }
+h5 { font-size: 1rem;   margin: 1rem 0 0.3rem; }
+
+p {
+  margin: 0 0 1rem;
+}
+
+dt {
+  margin-left: 0.6rem;
+  margin-top: 0.6rem;
+  font-weight: bold;
+}
+
+dd {
+  margin-left: 1.8rem;
+}
+
+blockquote {
+  margin: 1rem 0 1rem 0;
+  padding: 0.2rem 0 0.2rem 1rem;
+  border-left: 2px solid var(--border);
+  color: #333;
+}
+
+pre {
+  margin: 0 0 1rem 1.2rem;
+  overflow-x: auto;
+  white-space: pre;
+}
+
+pre code {
+  padding: 0;
+}
+
+code {
+  font-size: 0.9em;
+}
+
+table {
+  width: 100%;
+  margin: 0 0 1.5rem;
+  border-collapse: collapse;
+}
+
+th {
+  text-align: left;
+  border: 1px dashed var(--border);
+  padding: 5px 10px;
+}
+
+td {
+  border: 1px dashed var(--border);
+  padding: 5px 10px;
+}
+
+hr {
+  border: 0;
+  border-bottom: 1px dashed var(--border);
+  margin: 2rem 0;
+}
+
+/* ── Post metadata ─────────────────────────────────────────── */
+
+ul.post-info {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2.5rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem 0;
+}
+
+.excerpt-header ul.post-info {
+  margin-bottom: 1rem;
+}
+
+ul.post-info li {
+  display: flex;
+  align-items: center;
+}
+
+li.post-date {
+  background: url(./genericons/time.svg) left center no-repeat;
+  background-size: 14px;
+  padding-left: 20px;
+}
+
+li.post-author {
+  background: url(./genericons/user.svg) left center no-repeat;
+  background-size: 14px;
+  padding-left: 20px;
+  margin-left: 1.5rem;
+}
+
+li.post-category {
+  background: url(./genericons/category.svg) left center no-repeat;
+  background-size: 14px;
+  padding-left: 20px;
+  margin-left: 1.5rem;
+}
+
+/* ── Previous / next post navigation ──────────────────────── */
+
+div.previous-next-post {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 2rem;
+  gap: 1rem;
+}
+
+div.next-post  { flex: 1; text-align: left; }
+div.previous-post { flex: 1; text-align: right; }
+
+/* ── Post list (index) ─────────────────────────────────────── */
+
+div.excerpt {
+  padding: 1.5rem 0;
+  border-bottom: 1px dashed var(--border);
+}
+
+div.excerpt:first-of-type {
+  padding-top: 0;
+}
+
+div.excerpt-header {
+  margin-bottom: 0.75rem;
+}
+
+.excerpt-header h3 {
+  margin: 0 0 0.4rem;
+}
+
+.excerpt-header a {
+  text-decoration: none;
+}
+
+.excerpt-header a:hover {
+  text-decoration: underline;
+}
+
+/* ── Archive page ──────────────────────────────────────────── */
+
+
+p.archive-inline {
+  margin: 0;
+  line-height: 2;
+}
+
+.archive-count {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+/* ── Drafts ────────────────────────────────────────────────── */
+
+.draft::before {
+  content: "(DRAFT) ";
+  color: var(--accent);
+}
+
+/* ── Comments (existing YAML-backed comments) ──────────────── */
+
+.comments {
+  margin-top: 3rem;
+}
+
+.comments__existing h2 {
+  font-size: 1.3rem;
+  margin-bottom: 1.2rem;
+}
+
+article.comment {
+  margin: 0 0 1.5rem 0;
+  padding: 0;
+}
+
+article.comment.child {
+  margin-left: 2rem;
+}
+
+.comment__author {
+  font-weight: bold;
+  font-size: 0.95rem;
+  margin-bottom: 0.25rem;
+}
+
+.comment__admin_tag {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  padding: 0 0.3em;
+  margin-right: 0.4em;
+  vertical-align: middle;
+}
+
+.comment__date {
+  font-weight: normal;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.comment__date a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.comment__body {
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.comment__meta {
+  margin-top: 0.4rem;
+  font-size: 0.85rem;
+}
+
+.comment__reply-link {
+  color: var(--muted);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.comment__reply-link:hover {
+  color: var(--accent);
+}
+
+/* ── Footer ────────────────────────────────────────────────── */
+
+footer {
+  margin-top: 4rem;
+  background: var(--nav-bg);
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+}
+
+.footer-inner {
+  max-width: calc(var(--content-max) + 2 * var(--content-pad));
+  margin: 0 auto;
+  padding: 1.2rem var(--content-pad);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+footer a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: var(--accent);
+}
+
+footer img {
+  vertical-align: middle;
+  margin-left: 0.5rem;
+  opacity: 0.7;
+}
+
+/* ── Mobile ────────────────────────────────────────────────── */
+
+@media (max-width: 600px) {
+  body {
+    font-size: 17px;
+  }
+
+  div.previous-next-post {
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  div.previous-post {
+    text-align: left;
+  }
+
+  article.comment.child {
+    margin-left: 1rem;
+  }
+
+  pre {
+    margin-left: 0;
+    font-size: 0.85em;
+  }
+}
+
+/* ── Code syntax highlighting (rouge) ──────────────────────── */
+/*
+   Ascetic theme in the site palette: keywords in the maroon accent,
+   literals (strings and numbers) in muted olive, comments in warm
+   grey italic; every other token keeps the body-text colour.
+   Scoped to .highlight so inline `code` spans are untouched.
+*/
+
+div.highlight {
+  background: #faf8f2;
+  border: 1px solid var(--border);
+  margin: 0 0 1rem;
+}
+
+pre.highlight {
+  margin: 0;
+  padding: 0.7rem 0.9rem;
+  overflow-x: auto;
+}
+
+/* Comments */
+.highlight .c,  .highlight .ch, .highlight .cd, .highlight .cm,
+.highlight .cp, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #9a927e;
+  font-style: italic;
+}
+
+/* Keywords, keyword operators, tag names, object keys */
+.highlight .k,  .highlight .kc, .highlight .kd, .highlight .kn,
+.highlight .kp, .highlight .kr, .highlight .kt,
+.highlight .nt, .highlight .nl, .highlight .ow {
+  color: var(--accent);
+}
+
+/* Literals: strings, characters, regexes, numbers */
+.highlight .s,  .highlight .sa, .highlight .sb, .highlight .sc,
+.highlight .dl, .highlight .sd, .highlight .s2, .highlight .se,
+.highlight .sh, .highlight .si, .highlight .sx, .highlight .sr,
+.highlight .s1, .highlight .ss,
+.highlight .m,  .highlight .mb, .highlight .mf, .highlight .mh,
+.highlight .mi, .highlight .mo, .highlight .il {
+  color: #5c6b30;
+}
+
+.highlight .err {
+  color: inherit;
+  background: none;
+}

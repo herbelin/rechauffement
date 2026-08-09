@@ -1,0 +1,12 @@
+<ul class="post-info">
+<li class="post-date" class="meta">
+{% assign mois = "janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre" | split: "|" %}
+{% assign m = include.date | date: "%m" | minus: 1 %}
+{% assign jour = include.date | date: "%d" | plus: 0 %}
+{% assign annee = include.date | date: "%Y" %}
+{{ jour }} {{ mois[m] }} {{ annee }}</li>
+<li class="post-author">{{include.author}}</li>
+<li class="post-category">
+ <span>{% for category in include.categories %}<a href="/category/{{ category | slugify }}/" class="meta">{{category}}</a>{% if forloop.last == false %}, {% endif %}{% endfor %}</span>
+</li>
+</ul>

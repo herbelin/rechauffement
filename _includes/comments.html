@@ -1,0 +1,27 @@
+<div class="comments">
+    {% if site.data.comments[page.slug] %}
+      <h3>Commentaires</h3>
+
+        {% assign count = 0 %}
+
+        {% assign comments = site.data.comments[page.slug] %}
+        {% assign comments = (comments | sort) %}
+        {% for comment in comments %}
+            {% assign index       = (forloop.index | minus: count) %}
+            {% assign avatar      = comment[1].avatar %}
+            {% assign email       = comment[1].email %}
+            {% assign name        = comment[1].name %}
+            {% assign url         = comment[1].url %}
+            {% assign date        = comment[1].date %}
+            {% assign message     = comment[1].message %}
+            {% include comment.html index=index avatar=avatar email=email name=name url=url date=date message=message %}
+            {% assign count = count | plus: 1 %}
+        {% endfor %}
+    {% endif %}
+</div>
+
+{% unless page.lock_comments %}
+<div class="comments__new">
+  {% include giscus.html %}
+</div>
+{% endunless %}
